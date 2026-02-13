@@ -113,6 +113,16 @@
       opacity: 0.8;
     }
 
+    #tryAgain {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      color: #ff1744;
+      display: none;
+    }
+
     @keyframes float {
       from { transform: translateY(100vh); }
       to { transform: translateY(-10vh); }
@@ -144,21 +154,25 @@
   <button id="yes" onclick="sayYes()">YES SHLOK 💖</button>
   <button id="no" onmouseover="moveButton()">No 😢</button>
 
-<div id="letter">
-  <h2>💌 A Valentine Letter From SHLOK</h2>
-  <p>
-    I know I'm not the best boyfriend but I wish I cud give u everything u need and want  
-    and at times I may be dumb… actually all the time I'm dumb  
-    but the thing is... I love you and babes I'll do anything to keep u smiling and happy-<br><br>
-    loves if it weren't for these boards I had so much planned-<br><br>
-    I will give u soosososo many things just always be mine and always love me-<br><br>
-    I love you 💖
-  </p>
-</div>
-  
+  <div id="letter">
+    <h2>💌 A Valentine Letter From SHLOK</h2>
+    <p>
+      I know I'm not the best boyfriend but I wish I cud give u everything u need and want  
+      and at times I may be dumb… actually all the time I'm dumb  
+      but the thing is... I love you and babes I'll do anything to keep u smiling and happy-<br><br>
+      loves if it weren't for these boards I had so much planned-<br><br>
+      I will give u soosososo many things just always be mine and always love me-<br><br>
+      I love you<br><br>
+      and umm ha most importantly wud u like to be my valentine?? 😍
+    </p>
+  </div>
 </div>
 
+<div id="tryAgain">TRY AGAIN 💘</div>
+
 <script>
+  let noCount = 0;
+
   function checkPassword() {
     const correctPassword = "karishma";
     const inputField = document.getElementById("passwordInput");
@@ -201,11 +215,18 @@
   }
 
   function moveButton() {
-    const button = document.getElementById("no");
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    button.style.left = x + "px";
-    button.style.top = y + "px";
+    noCount++;
+    if (noCount >= 10) {
+      document.body.innerHTML = '';
+      document.getElementById("tryAgain").style.display = "block";
+      setTimeout(() => location.reload(), 1500);
+    } else {
+      const button = document.getElementById("no");
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+    }
   }
 
   function sayYes() {
@@ -252,3 +273,4 @@
 
 </body>
 </html>
+
